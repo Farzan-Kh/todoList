@@ -1,0 +1,35 @@
+services:
+  userservice:
+    build: ./UserService
+    ports:
+      - "8081:8081"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+
+  taskservice:
+    build: ./TaskService
+    ports:
+      - "8082:8082"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+
+  apigateway:
+    build: ./APIGateway
+    ports:
+      - "8080:8080"
+
+  auditservice:
+    build: ./AuditService
+    ports:
+      - "8083:8083"
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

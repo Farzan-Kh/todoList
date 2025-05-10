@@ -1,0 +1,29 @@
+# UserService
+
+UserService is a microservice responsible for user registration and authentication in a microservices architecture. It is written in Go, uses the Gin web framework, and stores user data in MongoDB.
+
+## Features
+
+- User signup (registration)
+- User login (authentication with JWT)
+
+## Requirements
+
+- Docker
+
+## Environment Variables
+
+- `MONGO_URI`: MongoDB connection string (e.g., `mongodb://mongo:27017`)
+
+## API Endpoints
+
+### POST `/users/signup`
+
+Register a new user.
+
+**Request Body:**
+```json
+{
+  "username": "your_username",
+  "password": "your_password"
+}

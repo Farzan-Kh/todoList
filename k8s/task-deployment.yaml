@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: task-service
+  template:
+    metadata:
+      labels:
+        app: task-service
+    spec:
+      containers:
+      - name: task
+        image: f4rz4n/task-service:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGO_URI
+          value: mongodb://task-mongo:27017
